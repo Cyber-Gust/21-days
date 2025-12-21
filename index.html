@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Protocolo SMART Emagrecimento — O Desafio de 21 Dias</title>
+  <meta name="description" content="Desafio de 21 dias para destravar seu metabolismo e emagrecer com inteligência. Sem dietas malucas, apenas estratégia." />
+
+  <!-- Google Fonts: Inter (Texto) e Montserrat (Títulos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              light: '#34d399', // Emerald 400
+              DEFAULT: '#10b981', // Emerald 500
+              dark: '#059669', // Emerald 600
+              accent: '#d1fae5', // Emerald 100
+            },
+            dark: {
+              900: '#1f2937', // Orange 900
+              800: '#1e293b', // Orange 800
+            }
+          },
+          boxShadow: {
+            'glow': '0 0 20px rgba(16, 185, 129, 0.5)',
+            'card': '0 10px 30px -5px rgba(0, 0, 0, 0.08)',
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 3s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Styles */
+    body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, .font-display { font-family: 'Montserrat', sans-serif; }
+    
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    
+    .text-gradient {
+      background: linear-gradient(to right, #10b981, #0ea5e9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn-primary {
+      @apply bg-[#10b981] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:bg-[#059669] hover:shadow-glow transition-all transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-2 text-lg uppercase tracking-wide;
+    }
+
+    .card-hover {
+      @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-slate-900 overflow-x-hidden">
+
+  <!-- Top Bar de Urgência -->
+  <div class="bg-dark-900 text-white text-center py-2 px-4 text-xs md:text-sm font-medium tracking-wide">
+    ⚠️ Vagas limitadas para a turma atual. <span class="text-brand-light font-bold">Encerra em breve.</span>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2 group">
+        <div class="bg-dark-900 text-brand-light p-1.5 rounded-lg group-hover:rotate-6 transition-transform">
+          <i data-lucide="zap" class="w-6 h-6"></i>
+        </div>
+        <span class="font-display font-bold text-xl tracking-tight text-dark-900">SMART <span class="text-brand font-light">21</span></span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#como-funciona" class="hover:text-brand transition-colors">Método</a>
+        <a href="#para-quem" class="hover:text-brand transition-colors">Pra quem é</a>
+        <a href="#garantia" class="hover:text-brand transition-colors">Garantia</a>
+      </div>
+
+      <a href="#checkout" class="hidden md:inline-flex bg-dark-900 text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-slate-800 transition-colors shadow-md">
+        Começar Agora
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="md:hidden text-slate-900 p-2">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobileMenu" class="hidden bg-white border-t border-gray-100 md:hidden absolute w-full left-0 top-full shadow-xl">
+        <div class="flex flex-col p-4 space-y-4 font-medium text-center">
+            <a href="#como-funciona" class="py-2 text-slate-600">Como Funciona</a>
+            <a href="#depoimentos" class="py-2 text-slate-600">Resultados</a>
+            <a href="#checkout" class="bg-brand text-white py-3 rounded-xl font-bold uppercase">Quero minha vaga</a>
+        </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="top" class="relative pt-12 pb-20 lg:pt-24 lg:pb-32 overflow-hidden bg-grid-pattern">
+    <div class="absolute top-0 right-0 -z-10 opacity-30 translate-x-1/3 -translate-y-1/3">
+        <div class="w-[500px] h-[500px] bg-brand/30 rounded-full blur-[100px]"></div>
+    </div>
+    
+    <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- Copy -->
+      <div class="space-y-8 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 bg-brand-accent/50 text-brand-dark px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-brand/20">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+          </span>
+          Protocolo Validado
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-black leading-[1.1] text-dark-900">
+          Desinflame e Seque em <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-teal-500">21 Dias</span> sem Sofrer.
+        </h1>
+
+        <p class="text-lg text-slate-600 leading-relaxed max-w-lg mx-auto lg:mx-0">
+          Esqueça as dietas que te deixam com fome. O <strong>Protocolo SMART</strong> é um sistema inteligente de nutrição + movimento mínimo que cabe na sua rotina corrida.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a href="#checkout" class="btn-primary">
+            Quero Desafiar 21 Dias
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </a>
+        </div>
+
+        <div class="flex items-center justify-center lg:justify-start gap-6 text-sm text-slate-500 pt-4">
+            <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i> 100% Online
+            </div>
+            <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i> Acesso Imediato
+            </div>
+        </div>
+      </div>
+
+      <!-- Hero Image / Visual -->
+      <div class="relative mx-auto lg:mr-0 max-w-md lg:max-w-full">
+        
+        <div class="absolute -left-6 top-10 bg-white p-4 rounded-2xl shadow-xl z-20 animate-float hidden md:block border border-gray-100">
+            <div class="flex items-center gap-3">
+                <div class="bg-green-100 p-2 rounded-full text-green-600">
+                    <i data-lucide="trending-down" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500 font-bold uppercase">Resultado Médio</p>
+                    <p class="text-lg font-bold text-dark-900">-3kg a -5kg</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-200 group" style="min-height: 400px;">
+            
+            <img 
+                src="imgs/img-1.jpg" 
+                alt="Foto de uma mulher feliz e saudável" 
+                class="w-full h-auto object-cover relative z-10 block"
+                onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'flex items-center justify-center h-full text-gray-500 p-10 text-center\'>⚠️ Imagem não encontrada.<br>Verifique a pasta imgs/</div>'"
+            >
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900/60 to-transparent z-20 pointer-events-none"></div>
+            
+            <div class="absolute bottom-6 left-6 right-6 text-white z-30">
+                <p class="font-display font-bold text-2xl">Você no controle.</p>
+                <p class="text-white/80 text-sm">Recupere sua autoestima em 3 semanas.</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Strip de "Dor/Solução" (Dark Mode para Contraste) -->
+  <section class="bg-dark-900 text-white py-12">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-700">
+            <div class="p-6 text-center md:text-left">
+                <h3 class="text-brand font-bold text-lg mb-2 flex items-center justify-center md:justify-start gap-2">
+                    <i data-lucide="x-circle" class="w-5 h-5"></i> Sem Passar Fome
+                </h3>
+                <p class="text-slate-400 text-sm">Você não vai viver de alface. Aprenda a comer com volume e saciedade.</p>
+            </div>
+            <div class="p-6 text-center md:text-left">
+                <h3 class="text-brand font-bold text-lg mb-2 flex items-center justify-center md:justify-start gap-2">
+                    <i data-lucide="x-circle" class="w-5 h-5"></i> Sem Academia Obrigatória
+                </h3>
+                <p class="text-slate-400 text-sm">Treinos de 15 min em casa ou caminhada estratégica. Você escolhe.</p>
+            </div>
+            <div class="p-6 text-center md:text-left">
+                <h3 class="text-brand font-bold text-lg mb-2 flex items-center justify-center md:justify-start gap-2">
+                    <i data-lucide="x-circle" class="w-5 h-5"></i> Sem Efeito Sanfona
+                </h3>
+                <p class="text-slate-400 text-sm">Um plano de saída para você manter o peso depois dos 21 dias.</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Como Funciona (Timeline Visual) -->
+  <section id="como-funciona" class="py-20 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <span class="text-brand font-bold tracking-wider uppercase text-sm">O Método</span>
+            <h2 class="text-3xl md:text-4xl font-display font-black text-dark-900 mt-2">
+                3 Semanas para Transformar seu Corpo
+            </h2>
+        </div>
+
+        <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+            
+            <!-- Fase 1 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-300 group-[.is-active]:bg-brand text-slate-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    <i data-lucide="flame" class="w-5 h-5"></i>
+                </div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-card border border-slate-100">
+                    <div class="text-xs font-bold text-brand uppercase mb-1">Semana 01</div>
+                    <h3 class="font-bold text-xl text-dark-900 mb-2">Detox Inflamatório & Ativação</h3>
+                    <p class="text-slate-600 text-sm">Limpamos sua alimentação dos sabotadores ocultos e ativamos a queima de gordura com a estratégia do "Café da Manhã Metabólico". Você desincha logo nos primeiros 3 dias.</p>
+                </div>
+            </div>
+
+            <!-- Fase 2 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brand text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    <i data-lucide="zap" class="w-5 h-5"></i>
+                </div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-card border border-slate-100">
+                    <div class="text-xs font-bold text-brand uppercase mb-1">Semana 02</div>
+                    <h3 class="font-bold text-xl text-dark-900 mb-2">Aceleração Máxima</h3>
+                    <p class="text-slate-600 text-sm">Introduzimos o ciclo de carboidratos e os treinos metabólicos curtos (HIIT adaptado). É aqui que a gordura visceral começa a ser usada como fonte primária de energia.</p>
+                </div>
+            </div>
+
+            <!-- Fase 3 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brand text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    <i data-lucide="award" class="w-5 h-5"></i>
+                </div>
+                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-card border border-slate-100">
+                    <div class="text-xs font-bold text-brand uppercase mb-1">Semana 03</div>
+                    <h3 class="font-bold text-xl text-dark-900 mb-2">Consolidação e Estilo de Vida</h3>
+                    <p class="text-slate-600 text-sm">Você aprende a regra 80/20 para comer o que gosta no fim de semana sem engordar tudo de novo. Entregamos seu plano de manutenção.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+  </section>
+
+  <!-- O que está incluso (Cards com Ícones) -->
+  <section id="o-que-recebe" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-display font-black text-dark-900">
+                Tudo o que você precisa em um só lugar
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand/30 transition-colors group">
+                <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand mb-6 group-hover:scale-110 transition-transform">
+                    <i data-lucide="book-open" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">O Manual do Protocolo</h3>
+                <p class="text-slate-600 text-sm">PDF interativo com o passo a passo de cada dia. O que comer, o que beber e o que fazer.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand/30 transition-colors group">
+                <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand mb-6 group-hover:scale-110 transition-transform">
+                    <i data-lucide="utensils" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">Cardápios Flexíveis</h3>
+                <p class="text-slate-600 text-sm">Opções baratas e acessíveis (ovo, frango, frutas da estação). Nada de ingredientes caros.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand/30 transition-colors group">
+                <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand mb-6 group-hover:scale-110 transition-transform">
+                    <i data-lucide="smartphone" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">Planner de Hábitos</h3>
+                <p class="text-slate-600 text-sm">Ferramenta visual para você marcar seu progresso diário (água, sono e treino). Viciante!</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand/30 transition-colors group">
+                <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand mb-6 group-hover:scale-110 transition-transform">
+                    <i data-lucide="play-circle" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-bold text-xl mb-3">Treinos em Vídeo</h3>
+                <p class="text-slate-600 text-sm">Biblioteca com treinos de 15 minutos gravados para você fazer na sala da sua casa.</p>
+            </div>
+
+            <!-- Card 5 (Destaque) -->
+            <div class="md:col-span-2 bg-dark-900 p-8 rounded-3xl border border-slate-800 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-brand rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-6">
+                    <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center text-brand shrink-0">
+                        <i data-lucide="gift" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl text-white mb-2">BÔNUS: Kit Sobrevivência Social</h3>
+                        <p class="text-slate-400 text-sm">Como comer pizza, hambúrguer ou beber cerveja no fim de semana sem estragar seu resultado. O guia definitivo da vida real.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Prova Social (Grid de Fotos) -->
+  <section id="depoimentos" class="py-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-display font-black text-center text-dark-900 mb-12">
+            Quem seguiu, teve resultado
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Depoimento 1 -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <div class="aspect-square bg-slate-200 rounded-xl mb-4 relative overflow-hidden flex items-center justify-center border-2 border-dashed border-slate-300">
+                     <!-- FOTO DO DEPOIMENTO AQUI -->
+                        <img 
+                            src="imgs/img-2.jpg" 
+                            alt="Antes e depois cliente" 
+                            class="w-full h-full object-cover"
+                        >
+                </div>
+                <div class="flex text-yellow-400 mb-2">
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+                <p class="text-slate-700 text-sm italic">"Perdi 4kg em 21 dias e finalmente consegui entrar na minha calça antiga. O suporte é incrível."</p>
+                <p class="text-xs font-bold mt-2 text-dark-900">- Mariana S.</p>
+            </div>
+
+            <!-- Depoimento 2 -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <div class="aspect-square bg-slate-200 rounded-xl mb-4 relative overflow-hidden flex items-center justify-center border-2 border-dashed border-slate-300">
+                     <!-- FOTO DO DEPOIMENTO AQUI -->
+                        <img 
+                            src="imgs/img-3.avif" 
+                            alt="Antes e depois cliente" 
+                            class="w-full h-full object-cover"
+                        >
+                </div>
+                <div class="flex text-yellow-400 mb-2">
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+                <p class="text-slate-700 text-sm italic">"O melhor investimento que fiz. Não é dieta, é reeducação. Me sinto muito mais disposta."</p>
+                <p class="text-xs font-bold mt-2 text-dark-900">- Carla M.</p>
+            </div>
+
+            <!-- Depoimento 3 -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <div class="aspect-square bg-slate-200 rounded-xl mb-4 relative overflow-hidden flex items-center justify-center border-2 border-dashed border-slate-300">
+                     <!-- FOTO DO DEPOIMENTO AQUI -->
+                        <img 
+                            src="imgs/img-4.jpg" 
+                            alt="Antes e depois cliente" 
+                            class="w-full h-full object-cover"
+                        >
+                </div>
+                <div class="flex text-yellow-400 mb-2">
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+                <p class="text-slate-700 text-sm italic">"Simples de seguir. As receitas salvam demais no dia a dia corrido."</p>
+                <p class="text-xs font-bold mt-2 text-dark-900">- Patrícia L.</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Checkout Section (Alta Conversão) -->
+  <section id="checkout" class="py-20 relative overflow-hidden bg-dark-900">
+    <!-- Efeitos de Fundo -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand/10 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+        <!-- Caixa de Oferta -->
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+            
+            <!-- Cabeçalho da Oferta -->
+            <div class="bg-brand text-white p-6 text-center">
+                <p class="font-bold text-lg uppercase tracking-wider">Oferta Especial Por Tempo Limitado</p>
+                <div class="mt-2 text-brand-dark bg-white/20 inline-block px-4 py-1 rounded-full text-sm font-bold backdrop-blur-sm">
+                    <i data-lucide="clock" class="inline w-4 h-4 mr-1"></i>
+                    Bônus liberados: <span id="countdown">Carregando...</span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2">
+                <!-- Coluna Benefícios -->
+                <div class="p-8 bg-slate-50 border-r border-slate-100">
+                    <h3 class="font-display font-bold text-2xl text-dark-900 mb-6">Você vai receber:</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-sm text-slate-700">
+                            <i data-lucide="check" class="w-5 h-5 text-brand shrink-0"></i>
+                            <span>Protocolo SMART Completo (21 Dias)</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-slate-700">
+                            <i data-lucide="check" class="w-5 h-5 text-brand shrink-0"></i>
+                            <span>Guia de Alimentação Metabólica</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-slate-700">
+                            <i data-lucide="check" class="w-5 h-5 text-brand shrink-0"></i>
+                            <span>Planner de Hábitos Digital</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-slate-700 font-bold">
+                            <i data-lucide="gift" class="w-5 h-5 text-brand shrink-0"></i>
+                            <span>Bônus 1: Guia Social (Comer fora)</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-slate-700 font-bold">
+                            <i data-lucide="gift" class="w-5 h-5 text-brand shrink-0"></i>
+                            <span>Bônus 2: 20 Receitas de 15 min</span>
+                        </li>
+                    </ul>
+
+                    <!-- Selo Garantia -->
+                    <div class="mt-8 flex items-center gap-4 bg-white p-4 rounded-xl border border-slate-200">
+                        <img src="https://img.icons8.com/color/96/guarantee.png" alt="Selo Garantia" class="w-12 h-12">
+                        <div>
+                            <p class="font-bold text-dark-900 text-sm">Garantia Incondicional</p>
+                            <p class="text-xs text-slate-500">7 Dias para testar. Risco zero.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna Preço/Formulário -->
+                <div class="p-8 flex flex-col justify-center">
+                    <div class="text-center mb-6">
+                        <p class="text-slate-400 text-sm line-through">De R$ 197,00</p>
+                        <div class="flex items-center justify-center gap-1">
+                            <span class="text-xl text-slate-600 font-bold">Por</span>
+                            <span class="text-5xl font-black text-dark-900 tracking-tight">R$ 97</span>
+                        </div>
+                        <p class="text-brand font-bold text-sm mt-2">ou 12x de R$ 9,74</p>
+                    </div>
+
+                    <!-- Captura de Lead / Checkout -->
+                    <form id="leadForm" class="space-y-4">
+                        <div>
+                            <input type="text" id="name" placeholder="Seu Nome Completo" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all" required>
+                        </div>
+                        <div>
+                            <input type="email" id="email" placeholder="Seu Melhor E-mail" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all" required>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-4 rounded-xl shadow-lg shadow-brand/30 transition-all transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
+                            <i data-lucide="lock" class="w-5 h-5"></i>
+                            GARANTIR VAGA AGORA
+                        </button>
+                    </form>
+                    
+                    <p id="formMsg" class="text-center text-sm mt-4 hidden font-bold"></p>
+
+                    <div class="mt-6 flex items-center justify-center gap-4 opacity-50 grayscale hover:grayscale-0 transition-all">
+                        <!-- Ícones de pagamento (Placeholders simples em SVG/Img) -->
+                        <div class="text-[10px] text-slate-400 text-center">
+                            🔒 Pagamento Seguro<br>SSL Encrypted
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-20 bg-slate-50">
+      <div class="max-w-3xl mx-auto px-4">
+          <h2 class="text-3xl font-display font-bold text-center mb-10 text-dark-900">Perguntas Frequentes</h2>
+          
+          <div class="space-y-4">
+              <!-- Item 1 -->
+              <details class="group bg-white rounded-2xl shadow-sm border border-slate-200">
+                  <summary class="flex items-center justify-between p-6 cursor-pointer font-bold text-slate-800 list-none">
+                      Preciso comprar suplementos?
+                      <span class="transition group-open:rotate-180"><i data-lucide="chevron-down" class="w-5 h-5"></i></span>
+                  </summary>
+                  <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                      Não! O método é baseado em comida de verdade que você encontra em qualquer supermercado ou feira. Suplementos são opcionais, não obrigatórios.
+                  </div>
+              </details>
+
+              <!-- Item 2 -->
+              <details class="group bg-white rounded-2xl shadow-sm border border-slate-200">
+                  <summary class="flex items-center justify-between p-6 cursor-pointer font-bold text-slate-800 list-none">
+                      Funciona para quem tem metabolismo lento?
+                      <span class="transition group-open:rotate-180"><i data-lucide="chevron-down" class="w-5 h-5"></i></span>
+                  </summary>
+                  <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                      Sim, o protocolo foi desenhado justamente para "destravar" o metabolismo através de estratégias de ciclo de carboidratos e jejum estratégico (opcional), que forçam o corpo a queimar gordura.
+                  </div>
+              </details>
+
+              <!-- Item 3 -->
+              <details class="group bg-white rounded-2xl shadow-sm border border-slate-200">
+                  <summary class="flex items-center justify-between p-6 cursor-pointer font-bold text-slate-800 list-none">
+                      E se eu não gostar?
+                      <span class="transition group-open:rotate-180"><i data-lucide="chevron-down" class="w-5 h-5"></i></span>
+                  </summary>
+                  <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                      Você tem 7 dias de garantia incondicional. Se achar que não é pra você, basta enviar um e-mail e devolvemos 100% do seu dinheiro. Risco zero.
+                  </div>
+              </details>
+          </div>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-12">
+    <div class="max-w-6xl mx-auto px-4 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6">
+        <div>
+            <p class="font-display font-bold text-dark-900 text-xl">SMART 21</p>
+            <p class="text-slate-500 text-xs mt-1">© 2024 Protocolo SMART. Todos os direitos reservados.</p>
+        </div>
+        <div class="text-xs text-slate-400 max-w-md text-center md:text-right">
+            Este site não faz parte do site do Facebook ou Facebook Inc. Além disso, este site NÃO é endossado pelo Facebook de nenhuma maneira. FACEBOOK é uma marca comercial da FACEBOOK, Inc.
+            <br><br>
+            Aviso Legal: Os resultados podem variar de pessoa para pessoa. Consulte seu médico antes de iniciar qualquer dieta ou exercício.
+        </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Inicializa Ícones
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Countdown Timer (Simulado para urgência - reseta a cada 24h)
+    function updateTimer() {
+        const now = new Date();
+        const endOfDay = new Date();
+        endOfDay.setHours(23, 59, 59, 999);
+        
+        const diff = endOfDay - now;
+        
+        const h = Math.floor(diff / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('countdown').innerText = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    }
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // Form Handling (Demo)
+    const form = document.getElementById('leadForm');
+    const msg = document.getElementById('formMsg');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button');
+        const originalText = btn.innerHTML;
+        
+        btn.disabled = true;
+        btn.innerHTML = '<span class="animate-spin mr-2">↻</span> Processando...';
+
+        // Simula envio
+        setTimeout(() => {
+            msg.classList.remove('hidden');
+            msg.classList.add('text-green-600');
+            msg.innerText = "Redirecionando para o pagamento seguro...";
+            
+            // Aqui você colocaria: window.location.href = "SEU_LINK_DE_CHECKOUT";
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+                alert("Neste ponto, o usuário seria enviado para o Checkout (Hotmart/Eduzz/Kiwify).");
+            }, 1000);
+        }, 1500);
+    });
+  </script>
+</body>
+</html>
