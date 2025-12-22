@@ -226,6 +226,21 @@
     const data = Object.fromEntries(new FormData(quizForm).entries());
     localStorage.setItem(QUIZ_ANSWERS_KEY, JSON.stringify(data));
 
+    // ===============================
+    // AUTO-SELECIONAR UPSELLS NO CHECKOUT
+    // ===============================
+    const DEFAULT_UPSELLS = ['videos', 'planner'];
+
+    DEFAULT_UPSELLS.forEach(key => {
+      const checkbox = document.querySelector(
+        `input[data-upsell="${key}"]`
+      );
+      if (checkbox) checkbox.checked = true;
+    });
+
+    // Atualiza o valor total com os upsells marcados
+    updateTotal();
+
     hideQuiz(true);
 
     // 🔥 REDIRECIONA PARA O CHECKOUT
